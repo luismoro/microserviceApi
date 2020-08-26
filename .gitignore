@@ -40,3 +40,10 @@ fake-api-data
 out
 bin
 .vscode
+
+
+### Logs ###
+*.logs
+*.gz
+*.zip
+*.log
