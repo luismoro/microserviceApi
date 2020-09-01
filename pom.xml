@@ -45,6 +45,16 @@
       <artifactId>commons-collections</artifactId>  
       <version>3.2.2</version> 
     </dependency>
+    <dependency>
+      <groupId>co.elastic.apm</groupId>
+      <artifactId>apm-agent-api</artifactId>
+      <version>1.18.0.RC1</version>
+    </dependency>
+    <dependency>
+      <groupId>co.elastic.apm</groupId>
+      <artifactId>apm-agent-attach</artifactId>
+      <version>1.18.0.RC1</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
