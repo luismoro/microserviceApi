@@ -26,7 +26,11 @@ public class ApiService {
         logger.debug("Microservice - 8080" + nowTime.toString());
 
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForEntity(getUrl(ports), String.class).getBody();
+        String url = getUrl(ports);
+        if (url != null)
+            return restTemplate.getForEntity(url, String.class).getBody();
+        else
+            return "";
     }
 
     public String getAsyncService(List ports) throws InterruptedException {
@@ -59,7 +63,7 @@ public class ApiService {
     }
 
         private String getUrl(List ports) {
-            String uri = new String();
+            String uri = null;
 
             if (!ports.isEmpty() && ports.get(0)!= null) {
                 String port = ports.get(0).toString();
