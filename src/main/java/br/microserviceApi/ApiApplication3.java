@@ -5,12 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiApplication {
+public class ApiApplication3 {
 
     public static void main(String[] args) {
         ElasticApmAttacher.attach();
 
-        SpringApplication.run(ApiApplication.class, args);
+        SpringApplication.run(ApiApplication3.class, args);
     }
 
 }
