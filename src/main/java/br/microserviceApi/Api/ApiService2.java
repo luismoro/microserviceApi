@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class ApiService {
+public class ApiService2 {
 
-    Logger logger = LoggerFactory.getLogger(ApiService.class);
+    Logger logger = LoggerFactory.getLogger(ApiService2.class);
 
-    public String getService(List ports) throws InterruptedException {
+    public String getService2(List ports) throws InterruptedException {
         System.out.println("Microservice - "+ ports.toString());
 
         Thread.sleep(4000L);
@@ -26,14 +26,14 @@ public class ApiService {
         logger.debug("Microservice - 8080" + nowTime.toString());
 
         RestTemplate restTemplate = new RestTemplate();
-        String url = getUrl(ports);
+        String url = getUrl2(ports);
         if (url != null)
             return restTemplate.getForEntity(url, String.class).getBody();
         else
             return "";
     }
 
-    public String getAsyncService(List ports) throws InterruptedException {
+    public String getAsyncService2(List ports) throws InterruptedException {
         System.out.println("Microservice - "+ ports.toString());
 
         Thread.sleep(4000L);
@@ -43,7 +43,7 @@ public class ApiService {
         logger.debug("Microservice - 8080" + nowTime.toString());
 
         AsyncRestTemplate restTemplate = new AsyncRestTemplate();
-        ListenableFuture<ResponseEntity<String>> futureEntity = restTemplate.getForEntity(getUrl(ports), String.class);
+        ListenableFuture<ResponseEntity<String>> futureEntity = restTemplate.getForEntity(getUrl2(ports), String.class);
 
 //            final DeferredResult<String> result = new DeferredResult<>();
 //
@@ -62,7 +62,7 @@ public class ApiService {
         return "Microservice End getAsyncService";
     }
 
-        private String getUrl(List ports) {
+        private String getUrl2(List ports) {
             String uri = null;
 
             if (!ports.isEmpty() && ports.get(0)!= null) {

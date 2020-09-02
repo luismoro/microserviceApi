@@ -12,30 +12,28 @@ import java.util.List;
 
 
 @RestController
-public class ApiController {
-
-    Logger logger = LoggerFactory.getLogger(ApiController.class);
+public class ApiController2 {
 
     @Autowired
-    ApiService apiService;
+    ApiService2 apiService2;
 
     @GetMapping("/get")
-    public String get(@RequestParam(value = "ports") List ports) throws InterruptedException {
-            return apiService.getService(ports);
+    public String get2(@RequestParam(value = "ports") List ports) throws InterruptedException {
+        return apiService2.getService2(ports);
     }
 
     @GetMapping("/getAsync")
-    public String getAsync(@RequestParam(value = "ports") List ports) throws InterruptedException {
-        return apiService.getService(ports);
+    public String getAsync2(@RequestParam(value = "ports") List ports) throws InterruptedException {
+        return apiService2.getService2(ports);
     }
 
     @GetMapping("/error")
-    public String error() throws Exception {
+    public String error2() throws Exception {
         throw new Exception();
     }
 
     @PostMapping("/close")
-    public String close(@RequestParam(value = "name", defaultValue = "World") String name) {
+    public String close2(@RequestParam(value = "name", defaultValue = "World") String name) {
         return name;
     }
 }
