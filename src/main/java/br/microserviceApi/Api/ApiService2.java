@@ -18,7 +18,7 @@ public class ApiService2 {
     public String getService2(List ports) throws InterruptedException {
         System.out.println("Microservice 2 - "+ ports.toString());
 
-        Thread.sleep(4000L);
+        Thread.sleep(1000L);
 
         LocalDateTime nowTime = LocalDateTime.now();
         System.out.println(nowTime);
