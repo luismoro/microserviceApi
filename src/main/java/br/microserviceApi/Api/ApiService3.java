@@ -2,6 +2,9 @@ package br.microserviceApi.Api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
@@ -16,7 +19,7 @@ public class ApiService3 {
 
     Logger logger = LoggerFactory.getLogger(ApiService3.class);
 
-    public String getService3(List ports) throws InterruptedException {
+    public String getService3(List ports, HttpHeaders headers) throws InterruptedException {
         System.out.println("Microservice - "+ ports.toString());
 
         Thread.sleep(2000L);
@@ -27,8 +30,11 @@ public class ApiService3 {
 
         RestTemplate restTemplate = new RestTemplate();
         String url = getUrl3(ports);
-        if (url != null)
-            return restTemplate.getForEntity(url, String.class).getBody();
+        if (url != null) {
+            HttpEntity<String> entity = new HttpEntity<String>("body", headers);
+
+            return restTemplate.exchange(url, HttpMethod.GET, entity, String.class).getBody();
+        }
         else
             return "";
     }

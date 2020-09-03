@@ -1,10 +1,8 @@
 package br.microserviceApi.Api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,13 +15,18 @@ public class ApiController3 {
     ApiService3 apiService3;
 
     @GetMapping("/get")
-    public String get3(@RequestParam(value = "ports") List ports) throws InterruptedException {
-            return apiService3.getService3(ports);
+    public String get3(@RequestParam(value = "ports") List ports,
+                       @RequestHeader HttpHeaders headers)
+            throws InterruptedException {
+
+            return apiService3.getService3(ports, headers);
     }
 
     @GetMapping("/getAsync")
-    public String getAsync3(@RequestParam(value = "ports") List ports) throws InterruptedException {
-        return apiService3.getService3(ports);
+    public String getAsync3(@RequestParam(value = "ports") List ports,
+                            @RequestHeader HttpHeaders headers)
+            throws InterruptedException {
+        return apiService3.getService3(ports, headers);
     }
 
     @GetMapping("/error")
